@@ -10,7 +10,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url(./yellow-question-mark.jpg);
     
 }
 
@@ -19,11 +18,6 @@ body {
     height: 70%;
     padding: 2%;
     position: relative;
-    background: url(./yellow-question-mark.jpg);
-    background-position: center;
-    background-size: cover;
-    border-radius: 20px;
-    background-repeat: no-repeat;
 }
 
 .container div {
@@ -61,7 +55,6 @@ body {
 @media screen and (max-width:700px) {
     .container {
         width: 95%;
-        background: none;
         height: 90%;
     }
 
