@@ -1,0 +1,70 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(./yellow-question-mark.jpg);
+    
+}
+
+.container {
+    width: 70%;
+    height: 70%;
+    padding: 2%;
+    position: relative;
+    background: url(./yellow-question-mark.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius: 20px;
+    background-repeat: no-repeat;
+}
+
+.container div {
+    height: 100%;
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+.container div input {
+    margin-top: 20px;
+    height: 15px;
+    width: 15px;
+}
+.correct{
+    background-color: rgba(59, 212, 59, 0.509);
+    padding: 10px;
+}
+.wrong{
+    background-color: rgba(255, 0, 0, 0.486);
+    padding: 10px;
+}
+.container div button {
+    padding: 10px 20px;
+    position: absolute;
+    right: 30px;
+    bottom: 20px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: none;
+    color: white;
+    background-color: blue;
+}
+
+@media screen and (max-width:700px) {
+    .container {
+        width: 95%;
+        height: 90%;
+    }
+
+    .container div button {
+        bottom: 20px;
+    }
+}

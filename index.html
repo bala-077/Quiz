@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Generator</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="container" class="container">
+        <h1 style="color: white;">QuiZz</h1> <hr>
+        <div id="one" class="one">
+            <h1>What does HTML stand for?</h1>
+            <input type="radio" name="html1" value="Hyper Text Markup Language">Hyper Text Markup Language <br>
+            <input type="radio" name="html1" value="Home Tool Markup Language">Home Tool Markup Language <br>
+            <input type="radio" name="html1" value="Hyperlinks and Text Markup Language">Hyperlinks and Text Markup
+            Language <br>
+            <input type="radio" name="html1" value="Hyperlinking Text Marking Language">Hyperlinking Text Marking
+            Language <br>
+            <button onclick="next()">Next</button>
+
+        </div>
+        <div id="two" class="two">
+            <h1>Which HTML attribute is used to define inline styles?</h1>
+            <span><input type="radio" name="html2" value="class">class <br></span>
+            <span><input type="radio" name="html2" value="style">style <br></span>
+            <input type="radio" name="html2" value="font">Font <br>
+            <input type="radio" name="html2" value="color">color <br>
+            <button onclick="next()">Next</button>
+
+        </div>
+        <div id="three" class="three">
+            <h1>Which of the following is a correct way to create a function in JavaScript?</h1>
+            <input type="radio" name="html3" value="function myFunction() {}">function myFunction() {} <br>
+            <input type="radio" name="html3" value="function: myFunction() {}">function: myFunction() {} <br>
+            <input type="radio" name="html3" value="function = myFunction() {}">function = myFunction() {} <br>
+            <input type="radio" name="html3" value="create function myFunction() {}">create function myFunction() {}
+            <br>
+            <button onclick="next()">Next</button>
+
+        </div>
+        <div id="four" class="four">
+            <h1>Which JavaScript method is used to write HTML content into a document?</h1>
+            <input type="radio" name="html4" value="document.write()">document.write() <br>
+            <input type="radio" name="html4" value="document.print()">document.print() <br>
+            <input type="radio" name="html4" value="document.show()">document.show() <br>
+            <input type="radio" name="html4" value="document.display()">document.display() <br>
+            <button onclick="next()">Next</button>
+
+        </div>
+        <div id="five" class="five">
+            <h1>Which HTML tag is used to define an internal style sheet?</h1>
+            <input type="radio" name="html5" value="style">style <br>
+            <input type="radio" name="html5" value="script">script <br>
+            <input type="radio" name="html5" value="css">css <br>
+            <input type="radio" name="html5" value="link">link <br>
+            <button onclick="next()">Next</button>
+
+        </div>
+        <div id="six" class="six">
+            <h1>What is the default value of the type attribute in a "button" element?</h1>
+            <input type="radio" name="html6" value="next">next <br>
+            <input type="radio" name="html6" value="button">button <br>
+            <input type="radio" name="html6" value="reset">reset <br>
+            <input type="radio" name="html6" value="text">text <br>
+            <button onclick="next()">Next</button>
+
+        </div>
+        <div id="seven" class="seven">
+            <h1>What does the push() method do in JavaScript?</h1>
+            <input type="radio" name="html7" value="Adds a new element to the beginning of an array">Adds a new element
+            to the beginning of an array <br>
+            <input type="radio" name="html7" value="Removes the last element from an array">Removes the last element
+            from an array <br>
+            <input type="radio" name="html7" value="Adds a new element to the end of an array">Adds a new element to the
+            end of an array <br>
+            <input type="radio" name="html7" value="Finds the index of a specified element in an array">Finds the index
+            of a specified element in an array <br>
+            <button onclick="next()">Next</button>
+
+        </div>
+        <div id="eight" class="eight">
+            <h1>Which HTML attribute is used to specify a unique identifier for an element?</h1>
+            <input type="radio" name="html8" value="id"> id <br>
+            <input type="radio" name="html8" value="class">class <br>
+            <input type="radio" name="html8" value="name">name <br>
+            <input type="radio" name="html8" value=" key"> key <br>
+            <button onclick="next()">Next</button>
+            <button class="submit" onclick="submitQuiz()" style="display:none;">Submit</button>
+
+        </div>
+        <div id="nine" class="nine">
+            <h1>What does the === operator do in JavaScript?</h1>
+            <input type="radio" name="html9" value=" Assigns a value to a variable"> Assigns a value to a variable <br>
+            <input type="radio" name="html9" value="Checks for equality of value and type">Checks for equality of value
+            and type <br>
+            <input type="radio" name="html9" value="Checks for equality of value">Checks for equality of value <br>
+            <input type="radio" name="html9" value="Checks for inequality">Checks for inequality <br>
+            <button onclick="next()">Next</button>
+
+        </div>
+        <div id="ten" class="ten">
+            <h1> Which of the following functions can convert a string to an integer in JavaScript?</h1>
+            <input type="radio" name="html10" value="parseInt()">parseInt() <br>
+            <input type="radio" name="html10" value="parseFloat()">parseFloat() <br>
+            <input type="radio" name="html10" value="toInteger()">toInteger() <br>
+            <input type="radio" name="html10" value="parse()">parse() <br>
+            <button onclick="checkAnswer()">Submit</button>
+            <button class="submit" onclick="submitQuiz()" style="display:none;">Submit</button>
+        </div>
+        <div class="users">
+            <h1>hello</h1>
+        </div>
+    </div>
+    <script>
+
+        var container = document.getElementById("container")
+        var content = container.querySelectorAll("div")
+        var preview = document.getElementById("preview")
+        let currentQuestionIndex = 0;
+        function showNextQuestion() {
+            for (let i = 0; i < content.length; i++) {
+                content[i].style.display = i === currentQuestionIndex ? 'block' : 'none';
+            }
+        }
+
+        function next() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < content.length) {
+                showNextQuestion();
+            } else {
+                alert("You've completed the quiz!");
+                currentQuestionIndex = 0;
+                showNextQuestion();
+            }
+        }
+        showNextQuestion();
+
+
+        for (item = 0; item < content.length; item++) {
+
+            var itemlist = 0
+            function checkAnswer() {
+
+                var html1 = document.getElementsByName("html1")
+                var one = document.getElementById("one")
+                var two = document.getElementById("two")
+                for (count = 0; count < html1.length; count++) {
+                    var selectedhtml1
+                    if (html1[count].checked) {
+                        selectedhtml1 = html1[count].value;
+                        break;
+                    }
+                }
+                
+                if (selectedhtml1 === "Hyper Text Markup Language") {
+                    itemlist = itemlist + 1
+                    console.log(selectedhtml1)
+                }
+                //----------frist quiz finish here--------
+                var html2 = document.getElementsByName("html2")
+
+                for (count2 = 0; count2 < html1.length; count2++) {
+                    var selectedhtml2
+                    if (html2[count2].checked) {
+                        selectedhtml2 = html2[count2].value;
+                        break;
+                    }
+                }
+               
+                if (selectedhtml2 === "style") {
+                    itemlist = itemlist + 1
+                    console.log(itemlist)
+                    console.log(selectedhtml2)
+                    next = next + 1
+
+                }
+                //---------second quiz finish here-------
+                var html3 = document.getElementsByName("html3")
+
+                for (count3 = 0; count3 < html1.length; count3++) {
+                    var selectedhtml3
+                    if (html3[count3].checked) {
+                        selectedhtml3 = html3[count3].value;
+                        break;
+                    }
+                }
+                
+                if (selectedhtml3 === "function myFunction() {}") {
+                    itemlist = itemlist + 1
+                    console.log(itemlist)
+                    console.log(selectedhtml3)
+                }
+                //---------third quiz finish here-------
+                var html4 = document.getElementsByName("html4")
+
+                for (count4 = 0; count4 < html4.length; count4++) {
+                    var selectedhtml4
+                    if (html4[count4].checked) {
+                        selectedhtml4 = html4[count4].value;
+                        break;
+                    }
+                }
+                
+                if (selectedhtml4 === "document.write()") {
+                    itemlist = itemlist + 1
+                    console.log(itemlist)
+                    console.log(selectedhtml4)
+                }
+                //---------fouth quiz finish here-------
+                var html5 = document.getElementsByName("html5")
+
+                for (count5 = 0; count5 < html5.length; count5++) {
+                    var selectedhtml5
+                    if (html5[count5].checked) {
+                        selectedhtml5 = html5[count5].value;
+                        break;
+                    }
+                }
+                
+                if (selectedhtml5 === "style") {
+                    itemlist = itemlist + 1
+                    console.log(itemlist)
+                    console.log(selectedhtml5)
+                }
+                //---------fifth quiz finish here-------
+                var html6 = document.getElementsByName("html6")
+
+                for (count6 = 0; count6 < html1.length; count6++) {
+                    var selectedhtml6
+                    if (html6[count6].checked) {
+                        selectedhtml6 = html6[count6].value;
+                        break;
+                    }
+                }
+                
+                if (selectedhtml6 === "button") {
+                    itemlist = itemlist + 1
+                    console.log(itemlist)
+                    console.log(selectedhtml6)
+                }
+                //---------sixth quiz finish here-------
+                var html7 = document.getElementsByName("html7")
+
+                for (count7 = 0; count7 < html1.length; count7++) {
+                    var selectedhtml7
+                    if (html7[count7].checked) {
+                        selectedhtml7 = html7[count7].value;
+                        break;
+                    }
+                }
+                
+                if (selectedhtml7 === "Adds a new element to the end of an array") {
+                    itemlist = itemlist + 1
+                    console.log(itemlist)
+                    console.log(selectedhtml7)
+                }
+                //---------seventh quiz finish here-------
+                var html8 = document.getElementsByName("html8")
+
+                for (count8 = 0; count8 < html1.length; count8++) {
+                    var selectedhtml8
+                    if (html8[count8].checked) {
+                        selectedhtml8 = html8[count8].value;
+                        break;
+                    }
+                }
+                
+                if (selectedhtml8 === "id") {
+                    itemlist = itemlist + 1
+                    console.log(itemlist)
+                    console.log(selectedhtml8)
+                }
+                //---------eight quiz finish here-------
+                var html9 = document.getElementsByName("html9")
+
+                for (count9 = 0; count9 < html1.length; count9++) {
+                    var selectedhtml9
+                    if (html9[count9].checked) {
+                        selectedhtml9 = html9[count9].value;
+                        break;
+                    }
+                }
+                
+                if (selectedhtml9 === "Checks for equality of value and type") {
+                    itemlist = itemlist + 1
+                    console.log(itemlist)
+                    console.log(selectedhtml9)
+                }
+                //---------ninth quiz finish here-------
+                var html10 = document.getElementsByName("html10")
+
+                for (count10 = 0; count10 < html1.length; count10++) {
+                    var selectedhtml10
+                    if (html10[count10].checked) {
+                        selectedhtml10 = html10[count10].value;
+                        break;
+                    }
+                }
+                
+                if (selectedhtml10 === "parseInt()") {
+                    itemlist = itemlist + 1
+                    console.log(itemlist)
+                    console.log(selectedhtml10)
+                }
+                //---------third quiz finish here-------
+                if(itemlist >= 7){
+                    console.log(itemlist)
+                    alert(`"Score Is: "+ itemlist+  <br> +
+                        "Good Work"`)
+                }
+                else if(itemlist >=5 && itemlist < 7){
+                    alert(`"Score Is: "+ itemlist+  <br> +
+                        "Nice Try"`)
+                }
+                else{
+                    alert("Score Is: "+ itemlist +
+                        "  Keep Working")
+                }
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
